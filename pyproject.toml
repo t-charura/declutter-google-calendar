@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "gcal-cli"
+version = "0.1.0"
+description = "CLI to batch delete Google Calendar events"
+authors = ["Tendai <Tendai.Charura@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.6.1"
+google-api-python-client = "^2.58.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
