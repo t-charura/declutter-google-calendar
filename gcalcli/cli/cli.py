@@ -4,6 +4,9 @@ from gcalcli.calendar.utils import create_token_from_credentials, remove_token
 app = typer.Typer()
 
 
+# TODO: set correct cli arguments based on typer.Argument(help=..)
+
+
 @app.command()
 def set_token(file_path: str = None):
     """
