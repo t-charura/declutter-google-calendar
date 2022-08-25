@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Project specific
+scripts/
+tmp/
+
+# Secrets and Tokens
+client_secret.json
+token.pkl
