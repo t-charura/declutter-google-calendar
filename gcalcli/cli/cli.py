@@ -1,8 +1,13 @@
 import typer
-from gcalcli.calendar.utils import create_token_from_credentials, remove_token
+
+from gcalcli.calendar.utils import create_token_from_credentials, delete_token
+from gcalcli.cli.delete import delete_app
+from gcalcli.cli.get import get_app
+
 
 app = typer.Typer()
-
+app.add_typer(delete_app, name='delete')
+app.add_typer(get_app, name='get')
 
 # TODO: set correct cli arguments based on typer.Argument(help=..)
 
@@ -19,16 +24,6 @@ def generate_token():
 
 
 @app.command()
-def delete_token():
+def remove_token():
     """Delete Token if it exists"""
-    remove_token()
-
-
-@app.command()
-def cli_test():
-    from gcalcli.calendar.service import create_service
-    service = create_service()
-    all_calendars = service.calendarList().list().execute()
-    for calendar in all_calendars.get("items"):
-        print(calendar.get("summary").lower())
-
+    delete_token()
