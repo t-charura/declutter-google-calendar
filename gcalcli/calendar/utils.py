@@ -24,7 +24,7 @@ def create_token_from_credentials() -> None:
         print('Please make sure that your JSON file is spelled correctly and is located in the above mentioned directory.')
 
 
-def remove_token():
+def delete_token():
     """Delete Token if it had been set in the past with 'gcal generate-token'"""
     if os.path.isfile(settings.TOKEN):
         os.remove(settings.TOKEN)
