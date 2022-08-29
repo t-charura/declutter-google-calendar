@@ -1,10 +1,10 @@
 import os
 import sys
 
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build, Resource
-from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import Resource, build
+from googleapiclient.errors import HttpError
 
 from gcalcli.config import settings
 
@@ -19,20 +19,18 @@ def create_service() -> Resource:
         creds = Credentials.from_authorized_user_file(settings.TOKEN_FILE_NAME, settings.SCOPES)
         if not creds.valid and creds.expired and creds.refresh_token:
             creds.refresh(Request())
-            with open(settings.TOKEN, 'w') as token:
+            with open(settings.TOKEN, "w") as token:
                 token.write(creds.to_json())
     else:
         print('Token does not exist - please create a token with "gcal generate-token"')
         sys.exit(1)
-    
+
     try:
-        service = build('calendar', 'v3', credentials=creds)
+        service = build("calendar", "v3", credentials=creds)
         return service
     except HttpError as error:
-        print('An error occurred: %s' % error)
+        print("An error occurred: %s" % error)
         sys.exit(1)
     except:
-        print('Could not connect to the Google Calendar API. Create a new Token')
+        print("Could not connect to the Google Calendar API. Create a new Token")
         sys.exit(1)
-        
-
