@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from gcalcli.calendar.service import create_service
+from gcalcli.calendar.utils import print_selection, print_time_period
 
 
 class Events:
@@ -16,7 +17,7 @@ class Events:
         for calendar in all_calendars.get("items"):
             calendar_summary = calendar.get("summary").lower()
             if calendar_name in calendar_summary:
-                print("Selected calendar:", calendar.get("summary"))
+                print_selection("calendar", calendar.get("summary"))
                 self.calendar_id = calendar.get("id")
 
     def set_event_id(self, event_name: str, time_max: str = None) -> None:
@@ -28,7 +29,7 @@ class Events:
         for event in calendar_events.get("items"):
             event_summary = event.get("summary").lower()
             if event_name in event_summary:
-                print("Selected event:", event.get("summary"))
+                print_selection("event", event.get("summary"))
                 self.event_id = event.get("recurringEventId")
                 break
 
@@ -54,7 +55,7 @@ class Events:
         if verbose:
             first = instances.get("items")[0].get("start").get("dateTime")[:10]
             last = instances.get("items")[-1].get("start").get("dateTime")[:10]
-            print(f"Delete all instances from {first} - {last}")
+            print_time_period(first, last)
         # delete instances
         for instance in instances.get("items"):
             instance["status"] = "cancelled"

@@ -1,5 +1,6 @@
 import os
 
+import typer
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 from gcalcli.config import settings
@@ -34,3 +35,21 @@ def delete_token():
         )
     else:
         print(f'File "{settings.TOKEN}" does not exist!')
+
+
+def print_selection(instance: str, name: str):
+    if instance == "calendar":
+        instance_color = typer.colors.BRIGHT_BLUE
+        event_color = typer.colors.BLUE
+    else:
+        instance_color = typer.colors.BRIGHT_GREEN
+        event_color = typer.colors.GREEN
+    instance_style = typer.style(instance, fg=instance_color)
+    name_style = typer.style(name, fg=event_color, bold=True)
+    typer.echo(f"Selected {instance_style}: {name_style}")
+
+
+def print_time_period(first: str, last: str):
+    first_style = typer.style(first, fg=typer.colors.BRIGHT_MAGENTA)
+    second_style = typer.style(last, fg=typer.colors.BRIGHT_MAGENTA)
+    typer.echo(f"Delete all instances from {first_style} - {second_style}")
