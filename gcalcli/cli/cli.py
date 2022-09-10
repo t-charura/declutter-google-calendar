@@ -8,8 +8,6 @@ app = typer.Typer()
 app.add_typer(delete_app, name="delete")
 app.add_typer(get_app, name="get")
 
-# TODO: set correct cli arguments based on typer.Argument(help=..)
-
 
 @app.command()
 def generate_token():
