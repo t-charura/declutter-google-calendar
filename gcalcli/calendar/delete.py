@@ -52,7 +52,22 @@ class Events:
                 calendarId=self.calendar_id, eventId=instance.get("id"), body=instance
             ).execute()
 
-    def batch_delete_by_time_period():
+    def batch_delete_by_date(self, calendar_name: str, max_date: str, min_date: str = None):
+
+        self._set_calendar_id(calendar_name)
+
+        events = (
+            self.service.events()
+            .list(calendarId=self.calendar_id, singleEvents=True, timeMax=max_date, timeMin=min_date)
+            .execute()
+        )
+
+        # TODO: put into utils - pretty print - number of events / instances
+        print("Number of deleted events:", len(events.get("items")))
+
+        for event in events.get("items"):
+            self.service.events().delete(calendarId=self.calendar_id, eventId=event["id"]).execute()
+
         # delete all events between 2 dates
         # delete all events prior to date
         # if min_date in init

@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 import typer
 
@@ -24,6 +25,15 @@ def recurrence(
 
 
 @delete_app.command()
-def placeholder():
-    """Delete something"""
-    pass
+def batch(
+    calendar_name: str = typer.Argument(..., help="String to fuzzy match the calendar name"),
+    max_date: Optional[str] = typer.Argument(..., help="max_date"),
+    min_date: Optional[str] = typer.Argument(None, help="min_date"),
+):
+    if max_date:
+        max_date = utils.verify_and_transform_date(max_date)
+    if min_date:
+        min_date = utils.verify_and_transform_date(min_date)
+
+    gcal = Events()
+    gcal.batch_delete_by_date(calendar_name=calendar_name, max_date=max_date, min_date=min_date)
