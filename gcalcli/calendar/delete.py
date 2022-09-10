@@ -10,7 +10,7 @@ class Events:
         self.calendar_id = None
         self.event_id = None
 
-    def set_calendar_id(self, calendar_name: str):
+    def _set_calendar_id(self, calendar_name: str):
         calendar_name = calendar_name.lower()
         # get all calendars
         all_calendars = self.service.calendarList().list().execute()
@@ -20,7 +20,7 @@ class Events:
                 print_selection("calendar", calendar.get("summary"))
                 self.calendar_id = calendar.get("id")
 
-    def set_event_id(self, event_name: str, time_max: str = None) -> None:
+    def _set_event_id(self, event_name: str, time_max: str = None) -> None:
         event_name = event_name.lower()
         # get all events from specified calendar
         calendar_events = (
@@ -33,29 +33,18 @@ class Events:
                 self.event_id = event.get("recurringEventId")
                 break
 
-    def delete_recurring_event_instances(
-        self,
-        calendar_name: str,
-        event_name: str,
-        time_max: str = None,
-        verbose: bool = True,
-    ):
-        if not time_max:
-            time_max = datetime.now().isoformat() + "Z"
+    def delete_recurring_event_instances(self, calendar_name: str, event_name: str, date: str):
 
-        self.set_calendar_id(calendar_name)
-        self.set_event_id(event_name, time_max)
+        self._set_calendar_id(calendar_name)
+        self._set_event_id(event_name, date)
 
         # get all instances of recurring event
         instances = (
-            self.service.events()
-            .instances(calendarId=self.calendar_id, eventId=self.event_id, timeMax=time_max)
-            .execute()
+            self.service.events().instances(calendarId=self.calendar_id, eventId=self.event_id, timeMax=date).execute()
         )
-        if verbose:
-            first = instances.get("items")[0].get("start").get("dateTime")[:10]
-            last = instances.get("items")[-1].get("start").get("dateTime")[:10]
-            print_time_period(first, last)
+        first = instances.get("items")[0].get("start").get("dateTime")[:10]
+        last = instances.get("items")[-1].get("start").get("dateTime")[:10]
+        print_time_period(first, last)
         # delete instances
         for instance in instances.get("items"):
             instance["status"] = "cancelled"
