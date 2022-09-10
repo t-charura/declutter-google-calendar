@@ -1,4 +1,6 @@
 import os
+import sys
+from datetime import datetime
 
 import typer
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -35,6 +37,14 @@ def delete_token():
         )
     else:
         print(f'File "{settings.TOKEN}" does not exist!')
+
+
+def verify_and_transform_date(date: str):
+    try:
+        return datetime.strptime(date, "%Y-%m-%d").isoformat() + "Z"
+    except ValueError:
+        print("Please provide your date in the following format: yyyy-mm-dd")
+        sys.exit(1)
 
 
 def print_selection(instance: str, name: str):
