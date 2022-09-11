@@ -22,5 +22,5 @@ def generate_token():
 
 @app.command()
 def remove_token():
-    """Delete Token if it exists"""
+    """Delete your Token if it exists"""
     delete_token()
