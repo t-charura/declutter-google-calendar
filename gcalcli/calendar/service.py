@@ -13,7 +13,7 @@ def create_service() -> Resource:
     """Construct a Resource for interacting with the Google Calendar API.
 
     Returns:
-        Resource:   A Resource object with methods for interacting with the API.
+        Resource: A Resource object with methods for interacting with the API.
     """
     if os.path.exists(settings.TOKEN):
         creds = Credentials.from_authorized_user_file(settings.TOKEN_FILE_NAME, settings.SCOPES)
