@@ -16,7 +16,7 @@ def recurrence(
     date: str = typer.Option(None, "--date", "-d", help="Delete all instances prior to this date (yyyy-mm-dd)"),
 ):
     """
-    Delete old instances of a recurring event.
+    Batch delete instances of a recurring event.
 
     The specific calendar and event is selected by fuzzy matching the corresponding parameters.
 
@@ -56,11 +56,12 @@ def batch(
 
     The argument calendar_name (habits) will be matched to the calendar if it is a substring of the calendar name.
     The argument max_date (upper bound, exclusive) indicates that all events prior to this date will be delete from the
-    calendar (if min_date is not set)
-    The min_date parameter is optional. If you want to delete events within a time period you have to set mind_date in
+    calendar (if min_date is None).
+    The min_date parameter is optional. If you want to delete events within a time period you have to set min_date in
     addition to max_date
 
-    Exaple: Delete all events from the calendar named "Daily Habits" between 2022-09-01 and 2022-09-22.
+    Example: Delete all events from the calendar named "Daily Habits" between 2022-09-01 and 2022-09-22.
+
         'gcal delete batch habits 2022-09-22 2022-09-01'
 
     """

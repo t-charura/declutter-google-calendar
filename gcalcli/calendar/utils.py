@@ -9,7 +9,7 @@ from gcalcli.config import settings
 
 
 def create_token_from_credentials():
-    """Create and save Token from credentials to access Google Calendar API."""
+    """Generate a Token from your Google credentials to access the Google Calendar API."""
     cwd = os.getcwd()
     credentials_file = os.path.join(cwd, settings.CREDENTIALS)
 
@@ -27,7 +27,7 @@ def create_token_from_credentials():
 
 
 def delete_token():
-    """Delete Token if it had been set in the past with 'gcal generate-token'"""
+    """Delete your Token if it had been set in the past with 'gcal generate-token'"""
     if os.path.isfile(settings.TOKEN):
         os.remove(settings.TOKEN)
         print("Your Token has been removed! Before you can use this CLI again, please generate a new Token")

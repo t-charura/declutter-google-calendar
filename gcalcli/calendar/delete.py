@@ -3,12 +3,13 @@ from gcalcli.calendar.utils import print_selection, print_time_period
 
 
 class Events:
-    def __init__(self) -> None:
+    def __init__(self):
         self.service = create_service()
         self.calendar_id = None
         self.event_id = None
 
     def _set_calendar_id(self, calendar_name: str):
+        """Set calendar id based on user input"""
         calendar_name = calendar_name.lower()
         # get all calendars
         all_calendars = self.service.calendarList().list().execute()
@@ -18,7 +19,8 @@ class Events:
                 print_selection("calendar", calendar.get("summary"))
                 self.calendar_id = calendar.get("id")
 
-    def _set_event_id(self, event_name: str, time_max: str = None) -> None:
+    def _set_event_id(self, event_name: str, time_max: str = None):
+        """Set event id based on user input"""
         event_name = event_name.lower()
         # get all events from specified calendar
         calendar_events = (
@@ -32,6 +34,13 @@ class Events:
                 break
 
     def delete_recurring_event_instances(self, calendar_name: str, event_name: str, date: str):
+        """Batch delete instances of a recurring event
+
+        Args:
+            calendar_name (str): Select a specific calendar
+            event_name (str): Select the recurring event
+            date (str): Delete all instances prior to the date (yyyy-mm-dd)
+        """
         self._set_calendar_id(calendar_name)
         self._set_event_id(event_name, date)
         # get all instances of recurring event
@@ -49,6 +58,13 @@ class Events:
             ).execute()
 
     def batch_delete_by_date(self, calendar_name: str, max_date: str, min_date: str = None):
+        """Batch delete events within a specific time period
+
+        Args:
+            calendar_name (str): Select a specific calendar
+            max_date (str): Delete all events prior the date (yyyy-mm-dd)
+            min_date (str, optional): Delete all events between max_date (upper bound) and min_date (yyyy-mm-dd). Defaults to None.
+        """
         self._set_calendar_id(calendar_name)
         # get all events within the specified time period
         events = (
