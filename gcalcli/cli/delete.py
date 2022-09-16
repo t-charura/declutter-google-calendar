@@ -27,7 +27,8 @@ def recurrence(
 
     The argument calendar_name (habits) will be matched to the calendar if it is a substring of the calendar name.
     The argument event_name (exercise) will be matched to the event if it is a substring of the event name.
-    The arguments can also be exact matches. Upper & lower case differences are ignored.
+    The arguments can also be exact matches. Upper & lower case differences are ignored. Be more specific in your
+    description of calendar_name and event_name if there are similar named calendars or events.
 
     The date value (-d) is optional. If no date value is set, all instances prior to today will be deleted.
     """
@@ -48,14 +49,16 @@ def batch(
     """
     Batch delete events within a specific time period.
 
-    The specific calendar is selected by fuzzy matching the corresponding parameters.
+    The specific calendar is selected by fuzzy matching the corresponding parameter.
 
     Example: If you want to delete all events from the calendar named "Daily Habits" before the 22nd of September 2022:
 
         'gcal delete batch habits 2022-09-22'
 
     The argument calendar_name (habits) will be matched to the calendar if it is a substring of the calendar name.
-    The argument max_date (upper bound, exclusive) indicates that all events prior to this date will be delete from the
+    The argument can also be an exact match. Upper & lower case differences are ignored. Be more specific in your
+    description of calendar_name if there are similar named calendars.
+    The argument max_date (upper bound, exclusive) indicates that all events prior to this date will be deleted from the
     calendar (if min_date is None).
     The min_date parameter is optional. If you want to delete events within a time period you have to set min_date in
     addition to max_date
@@ -63,6 +66,8 @@ def batch(
     Example: Delete all events from the calendar named "Daily Habits" between 2022-09-01 and 2022-09-22.
 
         'gcal delete batch habits 2022-09-22 2022-09-01'
+
+    Be aware of the order of dates. Since max_date is required it is always specified first.
 
     """
     if max_date:

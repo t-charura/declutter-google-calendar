@@ -12,7 +12,7 @@ app.add_typer(get_app, name="get")
 @app.command()
 def generate_token():
     """
-    Create Token to access your Google-Calendar API.
+    Create a Token based on your Google credentials to access the Google-Calendar API.
 
     Run this command in the directory that contains your Google access credentials.
     For more help, have a look at the documentation: www.google.com - link is comming soon
@@ -22,5 +22,5 @@ def generate_token():
 
 @app.command()
 def remove_token():
-    """Delete your Token if it exists"""
+    """Delete your Token if it exists."""
     delete_token()
