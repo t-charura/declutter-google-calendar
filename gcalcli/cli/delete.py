@@ -4,7 +4,7 @@ from typing import Optional
 import typer
 
 from gcalcli.calendar import utils
-from gcalcli.calendar.delete import Events
+from gcalcli.calendar.delete import DeleteEvents
 
 delete_app = typer.Typer()
 
@@ -36,7 +36,7 @@ def recurrence(
         date = utils.verify_and_transform_date(date)
     else:
         date = datetime.now().isoformat() + "Z"
-    gcal = Events()
+    gcal = DeleteEvents()
     gcal.delete_recurring_event_instances(calendar_name=calendar_name, event_name=event_name, date=date)
 
 
@@ -75,5 +75,5 @@ def batch(
     if min_date:
         min_date = utils.verify_and_transform_date(min_date)
 
-    gcal = Events()
+    gcal = DeleteEvents()
     gcal.batch_delete_by_date(calendar_name=calendar_name, max_date=max_date, min_date=min_date)
