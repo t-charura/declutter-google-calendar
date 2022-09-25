@@ -62,3 +62,12 @@ def print_time_period(first: str, last: str):
     first_style = typer.style(first, fg=typer.colors.BRIGHT_MAGENTA)
     second_style = typer.style(last, fg=typer.colors.BRIGHT_MAGENTA)
     typer.echo(f"Delete all instances from {first_style} - {second_style}")
+
+
+def print_event_names(event_name: str, recurrence: str):
+    """Print the names of calendar events."""
+    name_style = typer.style(event_name, fg=typer.colors.GREEN, bold=True)
+    if recurrence:
+        typer.echo(f"* {name_style} - {recurrence[0][6:]}")
+    else:
+        typer.echo(f"* {name_style}")
