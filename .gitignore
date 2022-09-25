@@ -131,6 +131,7 @@ dmypy.json
 # Project specific
 scripts/
 tmp/
+.vscode
 
 # Secrets and Tokens
 credentials.json
