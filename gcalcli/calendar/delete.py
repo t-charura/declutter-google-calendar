@@ -1,40 +1,11 @@
-from gcalcli.calendar.service import create_service
-from gcalcli.calendar.utils import print_selection, print_time_period
+from gcalcli.calendar import CalendarBase, utils
 
 
-class Events:
-    def __init__(self):
-        self.service = create_service()
-        self.calendar_id = None
-        self.event_id = None
-
-    def _set_calendar_id(self, calendar_name: str):
-        """Set calendar id based on user input"""
-        calendar_name = calendar_name.lower()
-        # get all calendars
-        all_calendars = self.service.calendarList().list().execute()
-        for calendar in all_calendars.get("items"):
-            calendar_summary = calendar.get("summary").lower()
-            if calendar_name in calendar_summary:
-                print_selection("calendar", calendar.get("summary"))
-                self.calendar_id = calendar.get("id")
-
-    def _set_event_id(self, event_name: str, time_max: str = None):
-        """Set event id based on user input"""
-        event_name = event_name.lower()
-        # get all events from specified calendar
-        calendar_events = (
-            self.service.events().list(calendarId=self.calendar_id, timeMax=time_max, singleEvents=True).execute()
-        )
-        for event in calendar_events.get("items"):
-            event_summary = event.get("summary").lower()
-            if event_name in event_summary:
-                print_selection("event", event.get("summary"))
-                self.event_id = event.get("recurringEventId")
-                break
+class DeleteEvents(CalendarBase):
+    """Class for batch deleting calendar entries"""
 
     def delete_recurring_event_instances(self, calendar_name: str, event_name: str, date: str):
-        """Batch delete instances of a recurring event
+        """Batch delete instances of a recurring event.
 
         Args:
             calendar_name (str): Select a specific calendar
@@ -49,7 +20,7 @@ class Events:
         )
         first = instances.get("items")[0].get("start").get("dateTime")[:10]
         last = instances.get("items")[-1].get("start").get("dateTime")[:10]
-        print_time_period(first, last)
+        utils.print_time_period(first, last)
         # delete instances
         for instance in instances.get("items"):
             instance["status"] = "cancelled"
@@ -58,7 +29,7 @@ class Events:
             ).execute()
 
     def batch_delete_by_date(self, calendar_name: str, max_date: str, min_date: str = None):
-        """Batch delete events within a specific time period
+        """Batch delete events within a specific time period.
 
         Args:
             calendar_name (str): Select a specific calendar
@@ -76,18 +47,3 @@ class Events:
         print("Number of deleted events:", len(events.get("items")))
         for event in events.get("items"):
             self.service.events().delete(calendarId=self.calendar_id, eventId=event["id"]).execute()
-
-
-# TODOs for later:
-# delete all events between 2 dates
-# delete all events prior to date
-# if min_date in init
-# need max_date
-# if max_date
-
-# delete ALL events from all calendars
-# delete all events from calendar x
-# if calendar_id set in init
-
-# default: ALL events from all calendars prior to current date
-# add mind and max date into init
