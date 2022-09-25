@@ -1,6 +1,6 @@
 import typer
 
-from gcalcli.calendar.service import create_service
+from gcalcli.calendar.get import GetInfo
 
 get_app = typer.Typer()
 
@@ -8,8 +8,13 @@ get_app = typer.Typer()
 @get_app.command()
 def calendars():
     """Show all availabe calendars."""
-    service = create_service()
-    all_calendars = service.calendarList().list().execute()
-    print("-" * 30)
-    for calendar in all_calendars.get("items"):
-        print(calendar.get("summary"))
+    gcal = GetInfo()
+    gcal.get_calendars()
+
+
+@get_app.command()
+def events(calendar_name: str = typer.Argument(..., help="String to fuzzy match the calendar name")):
+    """Show events from a specific calendar"""
+    gcal = GetInfo()
+    gcal.get_events_from_calendar(calendar_name)
+    pass
