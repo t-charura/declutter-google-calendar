@@ -1,3 +1,34 @@
 site_name: Google Calendar CLI
+
+nav:
+  - Home: README.md
+  - Documentation: add_page.md
+
+site_author: Tendai Charura
+
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+  language: en
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+      primary: orange
+      accent: pink
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+      primary: orange
+      accent: pink
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/t-charura
