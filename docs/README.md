@@ -1,9 +1,9 @@
 # Google Calendar CLI 
 
-TODO: more descriptive package name
-* declutterGcal ?
 
 **CLI to batch delete multiple Google Calendar events 📆**
+* delete all events within a specific time period
+* delete past entries of a specific recurring event series 
 
 ---
 
@@ -17,9 +17,14 @@ TODO: more descriptive package name
 
 <img style="float: right;" src="img/declutter.jpg" width="100">
 
-* What does the project do?
-* Why did you create it?
-* Build with ... (Python, Typer, Google-Api-Python-Client)
+Did you ever want to declutter your Google Calendar? Or get rid of old and irrelevant calendar events?
+
+You probably realised that neither the Google Calendar App nor the Website offer the functionality to batch delete multiple events at once. After deleting more than 100 events from my calendar by hand, I decided to automate the process and create this CLI to take of this process.
+
+
+* **Build with: (Python, Typer, Google-Api-Python-Client)**
+
+---
 
 ## Prerequisites
 
@@ -27,6 +32,7 @@ TODO: more descriptive package name
 * [Create and download credentials](https://developers.google.com/workspace/guides/create-credentials)
     * Credentials for a desktop application
 
+---
 
 ## Installation
 
@@ -54,6 +60,7 @@ $ python setup.py install
 ### Using **pip**
 Coming soon ... 
 
+---
 
 ## How to use
 
@@ -63,10 +70,13 @@ Please use ```--help```
 $ gcal --help 
 ```
 
+
 ### Configuration / SetUp / Verify credentials 
 
-    * Generate Token from credentials
-    * Execute command in directory that has credentials
+* Generate Token from credentials
+* Execute command in directory that has credentials
+
+
 ```console
 $ gcal generate-token
 ```
@@ -76,17 +86,34 @@ $ gcal generate-token
 $ gcal delete batch
 ```
 
+---
 
 ## Next Steps
 
-* Publish on pypi.org
+* [ ] Publish on pypi.org
+* [ ] Add option to install package with setup.py
 
+---
 
 ## Licence
 
-* Open source
+* How to display the licence?
 
+---
 
 ## Contact
 
-* Email: Gmail.com
+**Email:** tendai.charura@gmail.com
+
+**Github:** [t-charura](https://github.com/t-charura)
+
+
+---
+---
+---
+
+
+## My Todos:
+
+* More descriptive package name -> gcal-cli - it is not a general CLI
+    * declutter-gcal ?
