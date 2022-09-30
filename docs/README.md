@@ -2,6 +2,7 @@
 
 
 **CLI to batch delete multiple Google Calendar events 📆**
+
 * delete all events within a specific time period
 * delete past entries of a specific recurring event series 
 
@@ -15,7 +16,7 @@
 
 ## About the Project
 
-<img style="float: right;" src="img/declutter.jpg" width="100">
+<img style="float: right;" src="img/declutter.jpg" width="200">
 
 Did you ever want to declutter your Google Calendar? Or get rid of old and irrelevant calendar events?
 
@@ -109,11 +110,9 @@ $ gcal delete batch
 
 
 ---
----
----
 
 
-## My Todos:
+## My Todos (not part of the readme)
 
 * More descriptive package name -> gcal-cli - it is not a general CLI
     * declutter-gcal ?
