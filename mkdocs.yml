@@ -2,7 +2,7 @@ site_name: Google Calendar CLI
 
 nav:
   - Home: README.md
-  - Documentation: add_page.md
+  - Placeholder: add_page.md
 
 site_author: Tendai Charura
 
