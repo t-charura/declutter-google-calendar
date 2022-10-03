@@ -14,7 +14,8 @@ def generate_token():
     """
     Create a Token based on your Google credentials to access the Google-Calendar API.
 
-    Run this command in the directory that contains your Google access credentials.
+    Run this command in the directory that contains your Google access credentials. Make sure that your credentials
+    file is named: "credentials.json".
     For more help, have a look at the documentation: www.google.com - link is comming soon
     """
     create_token_from_credentials()
