@@ -36,16 +36,21 @@ Reference: [https://developers.google.com/workspace/guides/enable-apis](https://
 
     1. Click ***CONFIGURE CONSENT SCREEN***  (if there is no such button, please continue with step 4.)
     2. Select ***External*** and click ***CREATE***
-        * OAuth consent screen - under ***App information*** enter an App name in the field "App name" and add your Email in the field "User supportmail.com". At the end of the same page add your Email under ***Developer contact information*** in the field "Email addresses". Click on ***SAVE AND CONTINUE***
-        * Scopes - Click on ***SAVE AND CONTINUE*** (not necessary to make any adjustments here)
-        * Test users - Click on ***ADD USERS*** and add your Email again. Click on ***SAVE AND CONTINUE***
-        * Congratulations, you have configured the OAuth consent screen. Go back to the credentials page (step 2.) and click on ***Create Credentials > OAuth client ID***. Now you can continue with step 4.
+        * *OAuth consent screen* - under ***App information*** enter an App name in the field "App name" and add your Email in the field "User supportmail.com". 
+        
+            <img src="../img/google_workspace/app_information.png" width="400">
+
+        * *OAuth consent screen* - at the end of the page add your Email under ***Developer contact information*** in the field "Email addresses". Click ***SAVE AND CONTINUE***
+        * *Scopes* - Click ***SAVE AND CONTINUE*** (not necessary to make any adjustments here)
+        * *Test users* - Click ***ADD USERS*** and add your Email again. Click ***SAVE AND CONTINUE***
+
+    3. Congratulations, you have configured the OAuth consent screen. Go back to the credentials page (step 2.) and click ***Create Credentials > OAuth client ID***. Now you can continue with step 4 below.
 
 
 4. Click ***Application type > Desktop app***.
 5. In the Name field, type a name for the credential. This name is only shown in the Google Cloud console.
 6. Click ***Create***. The OAuth client created screen appears, showing your new Client ID and Client secret.
-7. Click on ***DOWNLOAD JSON***. A file is downloaded with a name similar to: `client_secret_...com.json`
+7. Click ***DOWNLOAD JSON***. A file is downloaded with a name similar to: `client_secret_...com.json`
 8. Rename the downloaded file to `credentials.json`
 
 Reference: [https://developers.google.com/workspace/guides/create-credentials#desktop-app](https://developers.google.com/workspace/guides/create-credentials#desktop-app)
