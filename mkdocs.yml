@@ -4,6 +4,7 @@ nav:
   - Home: README.md
   - Google Workspace Setup: google_workspace_setup.md
   - Documentation: documentation.md
+  - CLI Reference: cli_reference.md
 
 site_author: Tendai Charura
 
@@ -28,6 +29,9 @@ theme:
         name: Switch to dark mode
       primary: orange
       accent: pink
+
+plugins:
+  - search
 
 extra:
   social:
