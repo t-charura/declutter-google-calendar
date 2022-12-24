@@ -3,8 +3,7 @@ site_name: Google Calendar CLI
 nav:
   - Home: README.md
   - Google Workspace Setup: google_workspace_setup.md
-  - Documentation: documentation.md
-  - CLI Reference: cli_reference.md
+  - CLI Documentation: cli_documentation.md
 
 site_author: Tendai Charura
 
