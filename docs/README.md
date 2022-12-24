@@ -8,9 +8,9 @@
 
 ---
 
-**Documentation:** [Official Website](https://t-charura.github.io/gcal-cli/)
+**Documentation:** [Official Website](https://t-charura.github.io/declutter-google-calendar/)
 
-**Source Code:** [Github](https://github.com/t-charura/gcal-cli)
+**Source Code:** [Github](https://github.com/t-charura/declutter-google-calendar)
 
 ---
 
