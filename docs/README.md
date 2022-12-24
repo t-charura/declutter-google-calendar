@@ -1,4 +1,4 @@
-# Google Calendar CLI / Declutter Google Calendar
+# Declutter Google Calendar
 
 
 **CLI to batch delete multiple Google Calendar events 📆**

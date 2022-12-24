@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gcalcli"
+name = "declutter-google-calendar"
 version = "0.1.0"
 description = "CLI to batch delete Google Calendar events"
 authors = ["Tendai Charura <Tendai.Charura@gmail.com>"]
