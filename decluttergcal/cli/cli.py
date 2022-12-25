@@ -1,8 +1,8 @@
 import typer
 
-from gcalcli.calendar.utils import create_token_from_credentials, delete_token
-from gcalcli.cli.delete import delete_app
-from gcalcli.cli.get import get_app
+from decluttergcal.calendar.utils import create_token_from_credentials, delete_token
+from decluttergcal.cli.delete import delete_app
+from decluttergcal.cli.get import get_app
 
 app = typer.Typer()
 app.add_typer(delete_app, name="delete")

@@ -3,8 +3,8 @@ from typing import Optional
 
 import typer
 
-from gcalcli.calendar import utils
-from gcalcli.calendar.delete import DeleteEvents
+from decluttergcal.calendar import utils
+from decluttergcal.calendar.delete import DeleteEvents
 
 delete_app = typer.Typer()
 

@@ -1,4 +1,4 @@
-from gcalcli.calendar import CalendarBase, utils
+from decluttergcal.calendar import CalendarBase, utils
 
 
 class DeleteEvents(CalendarBase):

@@ -6,8 +6,8 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import Resource, build
 from googleapiclient.errors import HttpError
 
-from gcalcli.calendar import utils
-from gcalcli.config import settings
+from decluttergcal.calendar import utils
+from decluttergcal.config import settings
 
 
 class CalendarBase:

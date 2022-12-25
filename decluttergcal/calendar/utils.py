@@ -5,7 +5,7 @@ from datetime import datetime
 import typer
 from google_auth_oauthlib.flow import InstalledAppFlow
 
-from gcalcli.config import settings
+from decluttergcal.config import settings
 
 
 def create_token_from_credentials():

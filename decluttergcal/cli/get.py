@@ -1,6 +1,6 @@
 import typer
 
-from gcalcli.calendar.get import GetInfo
+from decluttergcal.calendar.get import GetInfo
 
 get_app = typer.Typer()
 
