@@ -11,16 +11,17 @@ delete_app = typer.Typer()
 
 @delete_app.command()
 def recurrence(
-    calendar_name: str = typer.Argument(..., help="String to fuzzy match the calendar name"),
-    event_name: str = typer.Argument(..., help="String to fuzzy match the recurring event name"),
-    date: str = typer.Option(None, "--date", "-d", help="Delete all instances prior to this date (yyyy-mm-dd)"),
+    calendar_name: str = typer.Argument(..., help="String to fuzzy match the calendar name."),
+    event_name: str = typer.Argument(..., help="String to fuzzy match the recurring event name."),
+    date: str = typer.Option(None, "--date", "-d", help="Delete all instances prior to this date (yyyy-mm-dd)."),
 ):
     """
     Batch delete instances of a recurring event.
 
-    The specific calendar and event is selected by fuzzy matching the corresponding parameters.
+    The specific calendar and event is selected by fuzzy matching with the corresponding parameters (calendar_name & 
+    event name).
 
-    Exmaple: If you want to delete all old recurring instances of the event "Daily exercise for 15 min" from the
+    Exmaple: If you want to delete all old recurring instances of the event "Daily exercise for 20 min" from the
     calendar named "Daily Habits" before the 22nd of September 2022:
 
         'gcal delete recurrence habits exercise -d 2022-09-22'
@@ -42,14 +43,14 @@ def recurrence(
 
 @delete_app.command()
 def batch(
-    calendar_name: str = typer.Argument(..., help="String to fuzzy match the calendar name"),
-    max_date: Optional[str] = typer.Argument(..., help="Delete all events prior to this date (yyyy-mm-dd)"),
-    min_date: Optional[str] = typer.Argument(None, help="Delete all events up until this date (yyyy-mm-dd)"),
+    calendar_name: str = typer.Argument(..., help="String to fuzzy match the calendar name."),
+    max_date: Optional[str] = typer.Argument(..., help="Delete all events prior to this date (yyyy-mm-dd)."),
+    min_date: Optional[str] = typer.Argument(None, help="Delete all events up until this date (yyyy-mm-dd)."),
 ):
     """
     Batch delete events within a specific time period.
 
-    The specific calendar is selected by fuzzy matching the corresponding parameter.
+    The specific calendar is selected by fuzzy matching with the corresponding parameter.
 
     Example: If you want to delete all events from the calendar named "Daily Habits" before the 22nd of September 2022:
 
@@ -68,7 +69,6 @@ def batch(
         'gcal delete batch habits 2022-09-22 2022-09-01'
 
     Be aware of the order of dates. Since max_date is required it is always specified first.
-
     """
     if max_date:
         max_date = utils.verify_and_transform_date(max_date)
