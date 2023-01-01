@@ -1,5 +1,7 @@
 # Google Workspace Setup
 
+<em>Images within this artcile can not be viewed within GitHub. Please refer to the [official documentation](https://t-charura.github.io/declutter-google-calendar/google_workspace_setup/). </em>
+
 ## Create a Google Cloud Project
 
 1. Open [https://console.cloud.google.com/](https://console.cloud.google.com/)
