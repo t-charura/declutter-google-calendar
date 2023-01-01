@@ -118,6 +118,9 @@ For example, if you want to delete all events from the calendar named "Daily Hab
 ``` console
 $ gcal delete batch habits 2022-09-22 2022-09-01
 ```
+<img src="img/readme/batch_delete.png" >
+
+
 If you do not provide the second date `MIN_DATE`, all events prior to the first date `MAX_DATE` will be deleted.
 
 For more details and examples have a look at the [CLI Documentation](cli_documentation.md#gcal-delete-batch).
@@ -134,7 +137,10 @@ For example, if you want to delete all old recurring instances of the event "Dai
 ``` console
 $ gcal delete recurrence habits exercise -d 2022-09-22
 ```
-In case you do not provide the date option, all instances prior to today will be deleted.
+
+<img src="img/readme/delete_recurrence.png" >
+
+In case you do not provide the date option, all instances prior to **today** will be deleted.
 
 For more details and examples have a look at the [CLI Documentation](cli_documentation.md#gcal-delete-recurrence).
 
